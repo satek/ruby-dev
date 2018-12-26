@@ -41,4 +41,6 @@ RUN cd vim && ./configure --with-features=huge \
 RUN git clone --depth 1 https://github.com/satek/vim.git ~/.vim
 RUN ln -s .vim/vimrc .vimrc
 
+RUN pip3 install mypy
+
 CMD ["/bin/bash", "-c", "tmux", "new", "-s", "dev"]
