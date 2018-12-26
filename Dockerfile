@@ -28,7 +28,6 @@ RUN git clone --depth 1 https://github.com/vim/vim.git
 RUN cd vim && ./configure --with-features=huge \
                           --enable-multibyte \
                           --enable-rubyinterp=yes \
-                          --with-ruby-command=/usr/local/rbenv/shims/ruby \
                           --enable-pythoninterp=yes \
                           --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
                           --enable-python3interp=yes \
