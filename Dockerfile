@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-stretch as ruby-vim
+FROM ruby:2.4.1-stretch as ruby-vim
 
 RUN apt-get update
 RUN apt-get install -y libncurses5-dev python-dev \
@@ -25,7 +25,7 @@ RUN rm /root/.vimrc
 RUN ln -s /root/.vim/ruby.vimrc /root/.vimrc
 
 
-FROM ruby:2.6.0-stretch
+FROM ruby:2.4.1-stretch
 
 WORKDIR /root/app
 
@@ -49,5 +49,10 @@ RUN apt-get install -y nodejs
 RUN npm install yarn -g
 
 ENV FZF_DEFAULT_COMMAND 'ag --nocolor --hidden -g ""'
+
+RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
+RUN tar xvjf phantomjs-1.9.8-linux-x86_64.tar.bz2
+RUN mv phantomjs-1.9.8-linux-x86_64 /usr/local/share
+RUN ln -sf /usr/local/share/phantomjs-1.9.8-linux-x86_64/bin/phantomjs /usr/local/bin
 
 CMD ["/bin/bash", "-c", "tmux", "new", "-s", "dev"]
