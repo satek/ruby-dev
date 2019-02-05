@@ -48,6 +48,13 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install yarn -g
 
+ENV PHANTOM_VERSION 2.1.1
+
+RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_VERSION}-linux-x86_64.tar.bz2
+RUN tar xvjf phantomjs-${PHANTOM_VERSION}-linux-x86_64.tar.bz2
+RUN mv phantomjs-${PHANTOM_VERSION}-linux-x86_64 /usr/local/share
+RUN ln -sf /usr/local/share/phantomjs-${PHANTOM_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin
+
 ENV FZF_DEFAULT_COMMAND 'ag --nocolor --hidden -g ""'
 
 CMD ["/bin/bash", "-c", "tmux", "new", "-s", "dev"]
