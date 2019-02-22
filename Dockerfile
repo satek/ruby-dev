@@ -33,7 +33,8 @@ RUN apt-get update
 RUN apt-get install -y libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev \
                        git curl lua5.3 software-properties-common \
                        python-dev python3-dev python-pip python3-pip \
-                       libperl-dev gdb tmux locales apt-utils silversearcher-ag
+                       libperl-dev gdb tmux locales apt-utils silversearcher-ag \
+                       chromium chromedriver
 
 COPY --from=ruby-vim /usr/local/share/vim /usr/local/share/vim
 COPY --from=ruby-vim /usr/local/bin/vim /usr/local/bin
